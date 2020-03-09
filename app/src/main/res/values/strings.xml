@@ -5,4 +5,9 @@
     <string name="menu_search_settings">Search Settings</string>
     <string name="menu_header_text">Navigation Menu</string>
     <string name="search_icon_text">Search</string>
+    <string name="auto_search">Enable Auto Search</string>
+    <string name="frequency_label">Frequency</string>
+    <string name="location_label">Location: </string>
+    <string name="keyword_title_label">Keywords</string>
+    <string name="add_keyword_button_label">Add Keyword</string>
 </resources>
