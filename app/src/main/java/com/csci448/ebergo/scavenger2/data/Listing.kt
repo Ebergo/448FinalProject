@@ -4,6 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 
 class Listing (title: String,
                descrption: String,
-               location: LatLng,
-               cost: Float,
-               vararg imageUrls: String)
+               location: LatLng, //location of item in latitude and longitude coords
+               cost: Float, //cost of item
+               service: String, //name of website/service e.g. craigslist
+               vararg imageUrls: String) //list of all image URLs
