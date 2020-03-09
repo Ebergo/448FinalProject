@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.csci448.ebergo.scavenger2.LocationActivity
@@ -49,8 +50,8 @@ class SearchSettingsFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_settings,container,false)
         locationButton = view.findViewById(R.id.location_button)
         locationButton.setOnClickListener{
-            val intent = LocationActivity.createIntent(context)
-            startActivity(intent)
+            val action = SearchSettingsFragmentDirections.actionNavSearchSettingsToLocationFragment()
+            findNavController().navigate(action)
         }
         keywordToggleRecyclerView = view.findViewById(R.id.keyword_settings_list) as RecyclerView
         keywordToggleRecyclerView.layoutManager = LinearLayoutManager(context)

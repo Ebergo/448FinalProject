@@ -1,6 +1,7 @@
 package com.csci448.ebergo.scavenger2.ui.ui.listing_list
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.csci448.ebergo.scavenger2.R
@@ -25,14 +27,16 @@ class ListingListFragment: Fragment() {
     private fun updateUI(listings:List<Listing>){
         adapter = ListingListAdapter(listings) {
             listing : Listing -> Unit
-            callbacks?.onListingListSelected(listing.id)
+            val action = ListingListFragmentDirections.actionNavListingsToDetailListingFragment()
+            findNavController().navigate(action)
+            //callbacks?.onListingListSelected(listing.id)
         }
         listinglistRecyclerView.adapter = adapter
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(LogTag,"onAttach Called")
-        callbacks = context as Callbacks?
+        //callbacks = context as Callbacks?
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +54,7 @@ class ListingListFragment: Fragment() {
     ): View? {
         Log.d(LogTag,"onCreateView Called")
         val view = inflater.inflate(R.layout.fragment_item_list_view,container,false)
+        view.setBackgroundColor(Color.WHITE)
         listinglistRecyclerView = view.findViewById(R.id.item_list_view) as RecyclerView
         listinglistRecyclerView.layoutManager = LinearLayoutManager(context)
         updateUI(emptyList())

@@ -1,4 +1,4 @@
-package com.csci448.ebergo.scavenger2.ui.ui.keyword_list
+package com.csci448.ebergo.scavenger2.ui.ui.search_settings.location
 
 import android.content.Context
 import android.os.Bundle
@@ -7,29 +7,17 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-
 import com.csci448.ebergo.scavenger2.R
 import com.csci448.ebergo.scavenger2.data.AggKeywordListing
-private const val LogTag = "448.KeywordListFragment"
-class KeywordListFragment: Fragment() {
-    private lateinit var keywordRecyclerView: RecyclerView
-    private lateinit var adapter:KeywordListAdapter
-    private lateinit var keywordListViewModel: KeywordListViewModel
-    private var callbacks:Callbacks? = null
-    interface Callbacks{
-        fun onAggKeywordSelected(keyword:String)
-    }
-    private fun updateUI(keywords:List<AggKeywordListing>){
-        adapter = KeywordListAdapter(keywords){ keyword->Unit
-            val action = KeywordListFragmentDirections.actionNavHomeToNavListings2()
-            findNavController().navigate(action)
+import com.csci448.ebergo.scavenger2.ui.ui.keyword_list.*
 
-        }
-        keywordRecyclerView.adapter = adapter
+
+class LocationFragment: Fragment() {
+
+    private lateinit var locationViewModel: LocationViewModel
+    private  val LogTag = "448.LocationFragment"
+    private fun updateUI(keywords:List<AggKeywordListing>){
+
     }
 
     override fun onAttach(context: Context) {
@@ -43,7 +31,7 @@ class KeywordListFragment: Fragment() {
         Log.d(LogTag,"onCreate Called")
         //setHasOptionsMenu(true)
         val factory = KeywordListViewModelFactory(requireContext())
-        keywordListViewModel = ViewModelProvider(this,factory).get(KeywordListViewModel::class.java)
+        locationViewModel = ViewModelProvider(this,factory).get(LocationViewModel::class.java)
 
     }
 
@@ -53,9 +41,7 @@ class KeywordListFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(LogTag,"onCreateView Called")
-        val view = inflater.inflate(R.layout.fragment_keyword_list,container,false)
-        keywordRecyclerView = view.findViewById(R.id.keyword_recycler_view) as RecyclerView
-        keywordRecyclerView.layoutManager = LinearLayoutManager(context)
+        val view = inflater.inflate(R.layout.location_settings_view,container,false)
         updateUI(emptyList())
         return view
     }
@@ -63,7 +49,7 @@ class KeywordListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(LogTag,"onViewCreated Called")
-        updateUI(keywordListViewModel.dummyAggListings)
+        updateUI(emptyList())
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -119,10 +105,10 @@ class KeywordListFragment: Fragment() {
     override fun onDetach() {
         Log.d(LogTag,"onDetatch Called")
         super.onDetach()
-        callbacks = null
+
     }
     companion object{
-        fun newInstance():KeywordListFragment{
+        fun newInstance(): KeywordListFragment {
             val args = Bundle().apply{}
             return KeywordListFragment().apply{
                 arguments = args

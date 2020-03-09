@@ -20,4 +20,5 @@ class KeywordHolder(val view: View):RecyclerView.ViewHolder(view) {
 
     }
 
+
 }

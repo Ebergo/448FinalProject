@@ -10,7 +10,7 @@ private const val LogTag = "448.LocationActivity"
 class LocationActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        setContentView(R.layout.listing_detail_view)
+        setContentView(R.layout.location_settings_view)
     }
     companion object {
         fun createIntent(packageContext: Context?): Intent {

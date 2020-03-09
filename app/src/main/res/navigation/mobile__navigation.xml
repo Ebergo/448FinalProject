@@ -9,19 +9,51 @@
         android:id="@+id/nav_home"
         android:name="com.csci448.ebergo.scavenger2.ui.ui.keyword_list.KeywordListFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_keyword_list" />
+        tools:layout="@layout/fragment_keyword_list">
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_listings2"
+            app:destination="@id/nav_listings" />
+    </fragment>
+<fragment
+    android:id="@+id/agg_keyword_listing"
+    android:label="aggListing"
+    tools:layout="@layout/fragment_keyword_listing"/>
+    <fragment
+        android:id="@+id/nav_listings"
+        android:name="com.csci448.ebergo.scavenger2.ui.ui.listing_list.ListingListFragment"
+        android:label="listings"
+        tools:layout="@layout/fragment_item_list_view">
+        <action
+            android:id="@+id/action_nav_listings_to_detailListingFragment"
+            app:destination="@id/detailListingFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_search_settings"
         android:name="com.csci448.ebergo.scavenger2.ui.ui.search_settings.SearchSettingsFragment"
         android:label="@string/menu_search_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_nav_search_settings_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_favorite"
         android:name="com.csci448.ebergo.scavenger2.ui.ui.favorite.FavoriteListFragment"
         android:label="@string/menu_favorites"
         tools:layout="@layout/fragment_favorite_list" />
+    <fragment
+        android:id="@+id/detailListingFragment"
+        android:name="com.csci448.ebergo.scavenger2.ui.ui.detail_listing.DetailListingFragment"
+        android:label="DetailListingFragment"
+        tools:layout="@layout/listing_detail_view"/>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.csci448.ebergo.scavenger2.ui.ui.search_settings.location.LocationFragment"
+        android:label="LocationFragment"
+        tools:layout="@layout/location_settings_view"/>
 
 
 </navigation>
