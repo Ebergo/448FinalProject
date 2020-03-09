@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">scavenger2</string>
+    <string name="app_name">Scavenger</string>
     <string name="menu_home">Home</string>
     <string name="menu_favorites">Favorites</string>
     <string name="menu_search_settings">Search Settings</string>
+    <string name="menu_header_text">Navigation Menu</string>
+    <string name="search_icon_text">Search</string>
 </resources>
