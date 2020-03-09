@@ -1,32 +1,34 @@
-package com.csci448.ebergo.scavenger2.ui.ui.keyword_list
+package com.csci448.ebergo.scavenger2.ui.ui.listing_list
 
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.csci448.ebergo.scavenger2.R
-import com.csci448.ebergo.scavenger2.data.AggKeywordListing
-private const val LogTag = "448.KeywordListFragment"
-class KeywordListFragment: Fragment() {
-    private lateinit var keywordRecyclerView: RecyclerView
-    private lateinit var adapter:KeywordListAdapter
-    private lateinit var keywordListViewModel: KeywordListViewModel
+import com.csci448.ebergo.scavenger2.data.Listing
+import java.util.*
+private const val LogTag = "448.ListingListFrag"
+class ListingListFragment: Fragment() {
+    private lateinit var listinglistRecyclerView: RecyclerView
+    private lateinit var adapter: ListingListAdapter
+    private lateinit var listingListViewModel: ListingListViewModel
     private var callbacks:Callbacks? = null
-    interface Callbacks{
-        fun onAggKeywordSelected(keyword:String)
+    interface Callbacks {
+        fun onListingListSelected(ListingID:UUID)
     }
-    private fun updateUI(keywords:List<AggKeywordListing>){
-        adapter = KeywordListAdapter(keywords){keyword : AggKeywordListing -> Unit
-            callbacks?.onAggKeywordSelected(keyword.keyword)
+    private fun updateUI(listings:List<Listing>){
+        adapter = ListingListAdapter(listings) {
+            listing : Listing -> Unit
+            callbacks?.onListingListSelected(listing.id)
         }
-        keywordRecyclerView.adapter = adapter
+        listinglistRecyclerView.adapter = adapter
     }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(LogTag,"onAttach Called")
@@ -35,10 +37,10 @@ class KeywordListFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         Log.d(LogTag,"onCreate Called")
-        //setHasOptionsMenu(true)
-        val factory = KeywordListViewModelFactory(requireContext())
-        keywordListViewModel = ViewModelProvider(this,factory).get(KeywordListViewModel::class.java)
+        val factory = ListingListViewModelFactory(requireContext())
+        listingListViewModel = ViewModelProvider(this,factory).get(ListingListViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -47,9 +49,9 @@ class KeywordListFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(LogTag,"onCreateView Called")
-        val view = inflater.inflate(R.layout.fragment_keyword_list,container,false)
-        keywordRecyclerView = view.findViewById(R.id.keyword_recycler_view) as RecyclerView
-        keywordRecyclerView.layoutManager = LinearLayoutManager(context)
+        val view = inflater.inflate(R.layout.fragment_item_list_view,container,false)
+        listinglistRecyclerView = view.findViewById(R.id.item_list_view) as RecyclerView
+        listinglistRecyclerView.layoutManager = LinearLayoutManager(context)
         updateUI(emptyList())
         return view
     }
@@ -57,28 +59,11 @@ class KeywordListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(LogTag,"onViewCreated Called")
-        updateUI(keywordListViewModel.dummyAggListings)
+        updateUI(listingListViewModel.listings)
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Log.d(LogTag,"onActivityCreated Called")
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        Log.d(LogTag,"onCreateOptionsMenu Called")
-        //inflater.inflate(R.menu.main_options_bar,menu)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d(LogTag,"onOptionsItemSelected() called")
-        return when(item.itemId){
-            R.id.action_search -> {
-                Toast.makeText(context,"search to be implemented", Toast.LENGTH_SHORT).show()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
     override fun onStart() {
         super.onStart()
@@ -114,5 +99,15 @@ class KeywordListFragment: Fragment() {
         Log.d(LogTag,"onDetatch Called")
         super.onDetach()
         callbacks = null
+    }
+    companion object {
+        fun newInstance(keyword:String):ListingListFragment{
+            val args = Bundle().apply{
+               // putSerializable(ARGS_LISTING_ID,id)
+            }
+            return ListingListFragment().apply{
+                arguments = args
+            }
+        }
     }
 }

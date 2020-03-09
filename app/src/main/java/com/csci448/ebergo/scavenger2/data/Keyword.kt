@@ -1,5 +1,5 @@
 package com.csci448.ebergo.scavenger2.data
 
-class Keyword (word: String,
-               active: Boolean,
-               autoSearch: Boolean)
+data class Keyword (var word: String = "dummy",
+               var active: Boolean = false,
+               var autoSearch: Boolean = false)

@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.csci448.ebergo.scavenger2.ui.ui.keyword_list"
+        android:name="com.csci448.ebergo.scavenger2.ui.ui.keyword_list.KeywordListFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_keyword_list" />
 
     <fragment
         android:id="@+id/nav_search_settings"
-        android:name="com.csci448.ebergo.scavenger2.ui.ui.search_settings"
+        android:name="com.csci448.ebergo.scavenger2.ui.ui.search_settings.SearchSettingsFragment"
         android:label="@string/menu_search_settings"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_favorite"
-        android:name="com.csci448.ebergo.scavenger2.ui.ui.favorite"
+        android:name="com.csci448.ebergo.scavenger2.ui.ui.favorite.FavoriteListFragment"
         android:label="@string/menu_favorites"
         tools:layout="@layout/fragment_favorite_list" />
 

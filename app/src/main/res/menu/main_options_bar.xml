@@ -5,5 +5,5 @@
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search_foreground"
         android:title="@string/search_icon_text"
-        app:showAsAction="ifRoom|withText"/>
+        app:showAsAction="never"/>
 </menu>
