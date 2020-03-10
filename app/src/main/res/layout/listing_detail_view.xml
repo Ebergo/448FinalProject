@@ -10,14 +10,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintVertical_weight="2">
 
         <TextView
             android:id="@+id/textView"
@@ -61,17 +64,41 @@
             tools:text="Location here" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <FrameLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_weight="4">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            app:srcCompat="@drawable/thumb_preview" />
+    </FrameLayout>
+
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
         android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout3"
+        app:layout_constraintVertical_weight="1">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -82,85 +109,71 @@
                 android:id="@+id/imageView4"
                 android:layout_width="64dp"
                 android:layout_height="match_parent"
-                tools:srcCompat="@tools:sample/avatars[1]" />
+                app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars[2]" />
+                app:srcCompat="@android:drawable/sym_def_app_icon" />
 
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars[3]" />
+                app:srcCompat="@drawable/thumb_preview" />
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars[4]" />
+                app:srcCompat="@android:drawable/sym_def_app_icon" />
 
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars[5]" />
+                app:srcCompat="@drawable/thumb_preview" />
 
             <ImageView
                 android:id="@+id/imageView9"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars[6]" />
+                app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
             <ImageView
                 android:id="@+id/imageView10"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars[7]" />
+                app:srcCompat="@drawable/thumb_preview" />
 
             <ImageView
                 android:id="@+id/imageView11"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars[8]" />
+                app:srcCompat="@android:drawable/sym_def_app_icon" />
         </LinearLayout>
     </HorizontalScrollView>
 
-    <FrameLayout
-        android:id="@+id/frameLayout3"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:srcCompat="@tools:sample/avatars[0]" />
-    </FrameLayout>
-
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+        app:layout_constraintVertical_weight="4">
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
 
     </ScrollView>
 
