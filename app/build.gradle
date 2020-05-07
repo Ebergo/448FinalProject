@@ -43,7 +43,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
     //implementation 'com.google.android.gms:auth-api-impl:11.6.0'
-    implementation 'com.google.android.gms:play-services:12.0.1'
+    //implementation 'com.google.android.gms:play-services:12.0.1'
     def nav_version = "2.3.0-alpha03"
 
     // Java language implementation
@@ -59,4 +59,10 @@ dependencies {
 
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+    implementation 'androidx.concurrent:concurrent-futures:1.0.0'
+    implementation 'androidx.work:work-runtime-ktx:2.3.2'
+
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }
